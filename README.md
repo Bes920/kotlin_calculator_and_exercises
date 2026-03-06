@@ -23,8 +23,13 @@ To build the debug APK:
 The APK will be generated at:
 `kotlin_calculator/app/build/outputs/apk/debug/app-debug.apk`
 
+To install it on a connected device:
+```bash
+./gradlew :app:installDebug
+```
+
 ### 2. Kotlin Exercises
-You can run the individual exercises using the following Gradle tasks:
+You can run the individual exercises using the following Gradle tasks. These will compile the code and execute the `main` function for each exercise, printing the output directly to your terminal.
 
 - **Exercise 1:**
   ```bash
@@ -46,3 +51,7 @@ This project uses **AndroidX** and **Jetifier**. Ensure your `gradle.properties`
 android.useAndroidX=true
 android.enableJetifier=true
 ```
+
+## GitHub Actions
+
+This repository is configured (via `.github/workflows/android.yml`) to automatically build the APK on every push to `main`. You can download the latest build from the **Actions** tab on GitHub under the **Artifacts** section of the latest successful run.
