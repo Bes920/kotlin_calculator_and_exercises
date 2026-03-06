@@ -29,7 +29,7 @@ To install it on a connected device:
 ```
 
 ### 2. Kotlin Exercises
-You can run the individual exercises using the following Gradle tasks. These will compile the code and execute the `main` function for each exercise, printing the output directly to your terminal.
+You can run the individual exercises using the following Gradle tasks.
 
 - **Exercise 1:**
   ```bash
@@ -46,23 +46,26 @@ You can run the individual exercises using the following Gradle tasks. These wil
 
 ## Configuration
 
-This project uses **AndroidX** and **Jetifier**. Ensure your `gradle.properties` includes:
+This project uses **AndroidX**. Ensure your `gradle.properties` includes:
 ```properties
 android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-## Releases
+## Releases & Automation
 
-To create a release for the **Kotlin Calculator**:
+This repository uses **GitHub Actions** to automate releases.
 
-1.  **Build the APK:** Run `./gradlew :app:assembleDebug`.
-2.  **Locate the APK:** The file is at `kotlin_calculator/app/build/outputs/apk/debug/app-debug.apk`.
-3.  **GitHub Release:** 
-    - Create a new tag (e.g., `calc-v1.0`) on GitHub.
-    - Title it "Kotlin Calculator v1.0".
-    - Upload the `app-debug.apk` as a release asset.
+### To Create a New Release:
+1. Ensure your changes are committed and pushed.
+2. Create and push a version tag (e.g., `v1.0`):
+   ```bash
+   git tag v1.0
+   git push origin v1.0
+   ```
+3. The **"Build and Release APK"** action will automatically:
+   - Compile the project.
+   - Create a GitHub Release.
+   - Upload the **`app-debug.apk`** to the release assets.
 
-## GitHub Actions
-
-This repository is configured (via `.github/workflows/android.yml`) to automatically build the APK on every push to `main`. You can download the latest build from the **Actions** tab on GitHub under the **Artifacts** section of the latest successful run.
+You can monitor the progress in the **Actions** tab of this repository.
