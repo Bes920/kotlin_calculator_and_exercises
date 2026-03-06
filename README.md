@@ -52,6 +52,17 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
+## Releases
+
+To create a release for the **Kotlin Calculator**:
+
+1.  **Build the APK:** Run `./gradlew :app:assembleDebug`.
+2.  **Locate the APK:** The file is at `kotlin_calculator/app/build/outputs/apk/debug/app-debug.apk`.
+3.  **GitHub Release:** 
+    - Create a new tag (e.g., `calc-v1.0`) on GitHub.
+    - Title it "Kotlin Calculator v1.0".
+    - Upload the `app-debug.apk` as a release asset.
+
 ## GitHub Actions
 
 This repository is configured (via `.github/workflows/android.yml`) to automatically build the APK on every push to `main`. You can download the latest build from the **Actions** tab on GitHub under the **Artifacts** section of the latest successful run.
