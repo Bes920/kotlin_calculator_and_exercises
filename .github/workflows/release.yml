@@ -3,12 +3,14 @@ name: Build and Release APK
 on:
   push:
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*'
 
 jobs:
   build:
     name: Build and Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # This is required to create a release
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,12 +29,11 @@ jobs:
         run: ./gradlew :app:assembleDebug
 
       - name: Create Release
-        id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          files: kotlin_calculator/app/build/outputs/apk/debug/app-debug.apk
+          files: |
+            **/build/outputs/apk/debug/*.apk
           name: Release ${{ github.ref_name }}
-          tag_name: ${{ github.ref }}
           draft: false
           prerelease: false
         env:
