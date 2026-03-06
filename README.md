@@ -29,7 +29,7 @@ To install it on a connected device:
 ```
 
 ### 2. Kotlin Exercises
-You can run the individual exercises using the following Gradle tasks. These will compile the code and execute the `main` function for each exercise, printing the output directly to your terminal.
+You can run the individual exercises using the following Gradle tasks.
 
 - **Exercise 1:**
   ```bash
@@ -46,12 +46,36 @@ You can run the individual exercises using the following Gradle tasks. These wil
 
 ## Configuration
 
-This project uses **AndroidX** and **Jetifier**. Ensure your `gradle.properties` includes:
+This project uses **AndroidX**. Ensure your `gradle.properties` includes:
 ```properties
 android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-## GitHub Actions
+## Releases & Automation
 
-This repository is configured (via `.github/workflows/android.yml`) to automatically build the APK on every push to `main`. You can download the latest build from the **Actions** tab on GitHub under the **Artifacts** section of the latest successful run.
+This repository uses **GitHub Actions** to automate releases and build the APK.
+
+### To Update/Create a Release with a Downloadable APK:
+
+1.  **Commit your changes:**
+    ```bash
+    git add .
+    git commit -m "Your update message"
+    git push origin release
+    ```
+
+2.  **Create and push a new version tag:**
+    (Increment the version number each time, e.g., `v1.1`, `v1.2`)
+    ```bash
+    git tag v1.1
+    git push origin v1.1
+    ```
+
+3.  **Monitor the Build:**
+    Go to the **Actions** tab on GitHub. The "Build and Release APK" workflow will start.
+
+4.  **Download the APK:**
+    Once the action is finished, go to the **Releases** section. Your new release will have the **`app-debug.apk`** in the **Assets** section.
+
+You can monitor the progress in the **Actions** tab of this repository.
